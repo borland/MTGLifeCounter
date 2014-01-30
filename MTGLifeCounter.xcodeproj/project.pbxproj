@@ -14,13 +14,14 @@
 		D342B265189B118E00F9A00F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D342B264189B118E00F9A00F /* main.m */; };
 		D342B269189B118E00F9A00F /* MTGAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D342B268189B118E00F9A00F /* MTGAppDelegate.m */; };
 		D342B26C189B118E00F9A00F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D342B26A189B118E00F9A00F /* Main.storyboard */; };
-		D342B26F189B118E00F9A00F /* MTGViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D342B26E189B118E00F9A00F /* MTGViewController.m */; };
 		D342B271189B118E00F9A00F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D342B270189B118E00F9A00F /* Images.xcassets */; };
 		D342B278189B118E00F9A00F /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D342B277189B118E00F9A00F /* XCTest.framework */; };
 		D342B279189B118E00F9A00F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D342B258189B118E00F9A00F /* Foundation.framework */; };
 		D342B27A189B118E00F9A00F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D342B25C189B118E00F9A00F /* UIKit.framework */; };
 		D342B282189B118E00F9A00F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D342B280189B118E00F9A00F /* InfoPlist.strings */; };
 		D342B284189B118E00F9A00F /* MTGLifeCounterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D342B283189B118E00F9A00F /* MTGLifeCounterTests.m */; };
+		D342B28F189B12E100F9A00F /* MTGDuelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D342B28E189B12E100F9A00F /* MTGDuelViewController.m */; };
+		D342B295189B13B200F9A00F /* MTGUtilityViews.m in Sources */ = {isa = PBXBuildFile; fileRef = D342B294189B13B200F9A00F /* MTGUtilityViews.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,14 +46,16 @@
 		D342B267189B118E00F9A00F /* MTGAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MTGAppDelegate.h; sourceTree = "<group>"; };
 		D342B268189B118E00F9A00F /* MTGAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MTGAppDelegate.m; sourceTree = "<group>"; };
 		D342B26B189B118E00F9A00F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		D342B26D189B118E00F9A00F /* MTGViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MTGViewController.h; sourceTree = "<group>"; };
-		D342B26E189B118E00F9A00F /* MTGViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MTGViewController.m; sourceTree = "<group>"; };
 		D342B270189B118E00F9A00F /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		D342B276189B118E00F9A00F /* MTGLifeCounterTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MTGLifeCounterTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D342B277189B118E00F9A00F /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		D342B27F189B118E00F9A00F /* MTGLifeCounterTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MTGLifeCounterTests-Info.plist"; sourceTree = "<group>"; };
 		D342B281189B118E00F9A00F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D342B283189B118E00F9A00F /* MTGLifeCounterTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MTGLifeCounterTests.m; sourceTree = "<group>"; };
+		D342B28D189B12E100F9A00F /* MTGDuelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTGDuelViewController.h; sourceTree = "<group>"; };
+		D342B28E189B12E100F9A00F /* MTGDuelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTGDuelViewController.m; sourceTree = "<group>"; };
+		D342B293189B13B200F9A00F /* MTGUtilityViews.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTGUtilityViews.h; sourceTree = "<group>"; };
+		D342B294189B13B200F9A00F /* MTGUtilityViews.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTGUtilityViews.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,13 +115,15 @@
 		D342B25E189B118E00F9A00F /* MTGLifeCounter */ = {
 			isa = PBXGroup;
 			children = (
+				D342B293189B13B200F9A00F /* MTGUtilityViews.h */,
+				D342B294189B13B200F9A00F /* MTGUtilityViews.m */,
 				D342B267189B118E00F9A00F /* MTGAppDelegate.h */,
 				D342B268189B118E00F9A00F /* MTGAppDelegate.m */,
 				D342B26A189B118E00F9A00F /* Main.storyboard */,
-				D342B26D189B118E00F9A00F /* MTGViewController.h */,
-				D342B26E189B118E00F9A00F /* MTGViewController.m */,
 				D342B270189B118E00F9A00F /* Images.xcassets */,
 				D342B25F189B118E00F9A00F /* Supporting Files */,
+				D342B28D189B12E100F9A00F /* MTGDuelViewController.h */,
+				D342B28E189B12E100F9A00F /* MTGDuelViewController.m */,
 			);
 			path = MTGLifeCounter;
 			sourceTree = "<group>";
@@ -251,7 +256,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				D342B265189B118E00F9A00F /* main.m in Sources */,
-				D342B26F189B118E00F9A00F /* MTGViewController.m in Sources */,
+				D342B28F189B12E100F9A00F /* MTGDuelViewController.m in Sources */,
+				D342B295189B13B200F9A00F /* MTGUtilityViews.m in Sources */,
 				D342B269189B118E00F9A00F /* MTGAppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
