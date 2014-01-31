@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface MTGUtilityViews : NSObject
-
+@interface MTGDisclosureIndicatorView : UIView
 @end
+
+

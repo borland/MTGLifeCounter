@@ -69,6 +69,9 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="nuE-pT-nJl" kind="push" id="wTn-Jr-qvA"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="6Y6-O5-qeH">
                                         <rect key="frame" x="0.0" y="174" width="320" height="44"/>
@@ -101,32 +104,239 @@
             </objects>
             <point key="canvasLocation" x="677" y="126"/>
         </scene>
-        <!--View Controller-->
+        <!--Duel View Controller-->
         <scene sceneID="zXM-VD-EyB">
             <objects>
-                <viewController id="Suo-ri-khZ" sceneMemberID="viewController">
+                <viewController id="Suo-ri-khZ" customClass="MTGDuelViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="RfX-LU-E27"/>
                         <viewControllerLayoutGuide type="bottom" id="ee1-SI-Gor"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="vZS-k0-9ek" customClass="MTG">
+                    <view key="view" contentMode="scaleToFill" id="vZS-k0-9ek">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x6P-17-7Au">
-                                <rect key="frame" x="5" y="7" width="54" height="22"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Back"/>
-                            </button>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gcx-A7-qzg">
+                                <rect key="frame" x="0.0" y="436" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="pfk-Gr-PVl"/>
+                                </constraints>
+                                <items>
+                                    <barButtonItem title="Back" id="oTV-n5-rQz">
+                                        <connections>
+                                            <action selector="backButtonPressed:" destination="Suo-ri-khZ" id="Epr-Ny-3iP"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="asT-dV-B6b"/>
+                                    <barButtonItem title="D20" id="asR-kg-oSv">
+                                        <connections>
+                                            <action selector="d20ButtonPressed:" destination="Suo-ri-khZ" id="90v-Q3-oug"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="k2E-oW-SNL"/>
+                                    <barButtonItem systemItem="refresh" id="SON-7q-yGW">
+                                        <connections>
+                                            <action selector="refreshButtonPressed:" destination="Suo-ri-khZ" id="oMs-u2-oiH"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                            <containerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EQp-lC-ct0" userLabel="C1">
+                                <rect key="frame" x="0.0" y="20" width="320" height="208"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <connections>
+                                    <segue destination="jlQ-4W-0P5" kind="embed" identifier="player1_embed" id="MbB-mQ-Cak"/>
+                                </connections>
+                            </containerView>
+                            <containerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AZf-SH-Wjc" userLabel="C2">
+                                <rect key="frame" x="0.0" y="228" width="320" height="208"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <connections>
+                                    <segue destination="jlQ-4W-0P5" kind="embed" identifier="player2_embed" id="A1v-hs-hh7"/>
+                                </connections>
+                            </containerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="gcx-A7-qzg" firstAttribute="leading" secondItem="vZS-k0-9ek" secondAttribute="leading" id="0iK-qr-2tv"/>
+                            <constraint firstItem="ee1-SI-Gor" firstAttribute="top" secondItem="gcx-A7-qzg" secondAttribute="bottom" id="FPw-8D-BV6"/>
+                            <constraint firstAttribute="trailing" secondItem="gcx-A7-qzg" secondAttribute="trailing" id="W6F-dF-D1J"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="bWh-1Q-QgE"/>
                     <nil key="simulatedTopBarMetrics"/>
+                    <connections>
+                        <outlet property="container1" destination="EQp-lC-ct0" id="zyC-ww-ZON"/>
+                        <outlet property="container2" destination="AZf-SH-Wjc" id="Trv-it-jN7"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qot-t5-RsL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1162" y="-49"/>
+            <point key="canvasLocation" x="1150" y="-49"/>
+        </scene>
+        <!--Three Player View Controller-->
+        <scene sceneID="Wtu-zk-ULy">
+            <objects>
+                <viewController id="nuE-pT-nJl" customClass="MTGThreePlayerViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="utC-Ea-HoS"/>
+                        <viewControllerLayoutGuide type="bottom" id="25o-jd-R0k"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="1z9-w5-L3I">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YEU-9I-sxD">
+                                <rect key="frame" x="0.0" y="436" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="w4M-QC-Hen"/>
+                                </constraints>
+                                <items>
+                                    <barButtonItem title="Back" id="1Xf-Xu-yu0">
+                                        <connections>
+                                            <action selector="backButtonPressed:" destination="nuE-pT-nJl" id="gHQ-p5-X4U"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="MrA-Z9-dD7"/>
+                                    <barButtonItem title="D20" id="Lgx-17-g6D">
+                                        <connections>
+                                            <action selector="d20ButtonPressed:" destination="nuE-pT-nJl" id="ZGt-Mp-Sct"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="0oN-Bb-lrt"/>
+                                    <barButtonItem systemItem="refresh" id="RCm-0C-MYU">
+                                        <connections>
+                                            <action selector="refreshButtonPressed:" destination="nuE-pT-nJl" id="lCm-3k-gEC"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                            <containerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qgn-8M-JdA" userLabel="C1">
+                                <rect key="frame" x="0.0" y="20" width="320" height="137"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <connections>
+                                    <segue destination="jlQ-4W-0P5" kind="embed" identifier="player1_embed" id="Ene-8E-gE3"/>
+                                </connections>
+                            </containerView>
+                            <containerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ntR-bh-ujJ" userLabel="C2">
+                                <rect key="frame" x="0.0" y="156" width="320" height="144"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <connections>
+                                    <segue destination="jlQ-4W-0P5" kind="embed" identifier="player2_embed" id="Npw-Vd-J0M"/>
+                                </connections>
+                            </containerView>
+                            <containerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4M4-ik-mka" userLabel="C3">
+                                <rect key="frame" x="0.0" y="298" width="320" height="138"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <connections>
+                                    <segue destination="jlQ-4W-0P5" kind="embed" identifier="player3_embed" id="2iu-Rf-u08"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="YEU-9I-sxD" firstAttribute="leading" secondItem="1z9-w5-L3I" secondAttribute="leading" id="ISc-Rx-KpE"/>
+                            <constraint firstAttribute="trailing" secondItem="YEU-9I-sxD" secondAttribute="trailing" id="cpZ-I9-wvH"/>
+                            <constraint firstItem="25o-jd-R0k" firstAttribute="top" secondItem="YEU-9I-sxD" secondAttribute="bottom" id="z5V-kz-oVu"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="0tw-ZJ-dT0"/>
+                    <nil key="simulatedTopBarMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rha-eJ-FqP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1150" y="560"/>
+        </scene>
+        <!--Player View Controller-->
+        <scene sceneID="rq7-c5-E5N">
+            <objects>
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="jlQ-4W-0P5" customClass="MTGPlayerViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="MIm-G2-aP3"/>
+                        <viewControllerLayoutGuide type="bottom" id="uLq-MO-cXo"/>
+                    </layoutGuides>
+                    <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="HhS-YT-9sZ" customClass="MTGPlayerBackgroundView">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="144"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="20" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tr1-x1-g4t">
+                                <rect key="frame" x="0.0" y="49" width="320" height="110"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <gestureRecognizers/>
+                                <fontDescription key="fontDescription" type="system" pointSize="120"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hiu-ck-zaa">
+                                <rect key="frame" x="260" y="84" width="40" height="40"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="50"/>
+                                <state key="normal" title="+">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="plusButtonPressed:" destination="jlQ-4W-0P5" eventType="touchUpInside" id="BxF-le-Gbv"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="elN-Pl-dWS">
+                                <rect key="frame" x="20" y="90" width="40" height="40"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="50"/>
+                                <state key="normal" title="-   ">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="minusButtonPressed:" destination="jlQ-4W-0P5" eventType="touchUpInside" id="g1z-0t-zUb"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bsh-3G-mX0">
+                                <rect key="frame" x="9" y="0.0" width="306" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Player 1">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstItem="elN-Pl-dWS" firstAttribute="leading" secondItem="HhS-YT-9sZ" secondAttribute="leading" constant="20" id="3Mb-5R-Tng"/>
+                            <constraint firstAttribute="centerY" secondItem="tr1-x1-g4t" secondAttribute="centerY" id="DK0-Mh-dau"/>
+                            <constraint firstAttribute="centerX" secondItem="tr1-x1-g4t" secondAttribute="centerX" id="GDm-8r-Rd5"/>
+                            <constraint firstAttribute="centerY" secondItem="elN-Pl-dWS" secondAttribute="centerY" constant="-6" id="PCb-3u-8pI"/>
+                            <constraint firstAttribute="trailing" secondItem="hiu-ck-zaa" secondAttribute="trailing" constant="20" id="Szc-NO-6vr"/>
+                            <constraint firstAttribute="centerY" secondItem="hiu-ck-zaa" secondAttribute="centerY" id="dWT-p3-4gv"/>
+                        </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="kOE-XO-68U" appends="YES" id="8Uc-0X-aV4"/>
+                            <outletCollection property="gestureRecognizers" destination="2up-OP-2Fv" appends="YES" id="H3u-NY-1sm"/>
+                        </connections>
+                    </view>
+                    <toolbarItems/>
+                    <connections>
+                        <outlet property="lifeTotalLabel" destination="tr1-x1-g4t" id="94B-Qi-XH8"/>
+                        <outlet property="playerNameButton" destination="bsh-3G-mX0" id="Xon-xZ-7EX"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="b3y-Pi-bJ8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="kOE-XO-68U">
+                    <connections>
+                        <action selector="lifeTotalWasTapped:" destination="jlQ-4W-0P5" id="PYO-Uv-KZQ"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="2up-OP-2Fv">
+                    <connections>
+                        <action selector="lifeTotalPanning:" destination="jlQ-4W-0P5" id="R4N-FU-nRV"/>
+                    </connections>
+                </panGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="1721" y="397"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
@@ -134,4 +344,7 @@
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
+    <inferredMetricsTieBreakers>
+        <segue reference="Npw-Vd-J0M"/>
+    </inferredMetricsTieBreakers>
 </document>

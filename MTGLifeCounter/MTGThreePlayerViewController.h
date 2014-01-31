@@ -1,5 +1,5 @@
 //
-//  MTGDuelViewController.h
+//  MTGThreePlayerViewController.h
 //  MTGLifeCounter
 //
 //  Created by Orion Edwards on 31/01/14.
@@ -8,11 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MTGDuelViewController : UIViewController
+@interface MTGThreePlayerViewController : UIViewController
 - (IBAction)backButtonPressed:(id)sender;
 - (IBAction)d20ButtonPressed:(id)sender;
 - (IBAction)refreshButtonPressed:(id)sender;
 
-@property (weak, nonatomic) IBOutlet UIView *container1;
-@property (weak, nonatomic) IBOutlet UIView *container2;
 @end
