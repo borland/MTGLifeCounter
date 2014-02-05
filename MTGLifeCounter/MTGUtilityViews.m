@@ -8,6 +8,10 @@
 
 #import "MTGUtilityViews.h"
 
+int unbiasedRandom(int bound) {
+    double d = (double)random() / (double)RAND_MAX;
+    return d * bound;
+}
 
 @implementation MTGDisclosureIndicatorView
 
@@ -46,6 +50,78 @@
     CGContextStrokePath(ctxt);
     
     CGContextRestoreGState(ctxt);
+}
+
+@end
+
+@implementation MTGDiceRollView {
+    UILabel* _label;
+}
+
+const NSUInteger UIViewAutoresizingFlexibleMargins = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleBottomMargin;
+
+-(id)initWithFrame:(CGRect)frame {
+    self = [super initWithFrame:frame];
+    if(self) {
+        //        self.backgroundColor = [[UIColor grayColor] colorWithAlphaComponent:0.8];
+        _diceFaceCount = 20; // default to D20
+        
+        // configurable bits
+        self.backgroundColor = [UIColor clearColor];
+        self.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
+        
+        CGFloat labelHeight = 60;
+        CGFloat labelWidth = frame.size.width - 20;
+        
+        // derive the center x and y
+        CGFloat centerX = frame.size.width / 2;
+        CGFloat bottomY = frame.size.height - labelHeight - 20;
+        
+        // create and configure the label
+        _label = [[UILabel alloc]initWithFrame:CGRectMake(
+                                                         centerX - (labelWidth / 2),
+                                                         bottomY ,
+                                                         labelWidth ,
+                                                         labelHeight
+                                                         )];
+        _label.backgroundColor = [UIColor grayColor];
+        _label.alpha = 1.0;
+        _label.textColor = [UIColor whiteColor];
+        _label.text = nil;
+        _label.font = [UIFont systemFontOfSize:40];
+        _label.textAlignment = NSTextAlignmentCenter;
+        _label.autoresizingMask = UIViewAutoresizingFlexibleMargins;
+        _label.layer.cornerRadius = 5;
+        [self addSubview:_label];
+        
+        self.userInteractionEnabled = NO;
+        _label.userInteractionEnabled = NO;
+    }
+    return self;
+}
+
+-(void)rollWithCompletion:(void (^)(BOOL finished))completion {
+    int n = unbiasedRandom((int)self.diceFaceCount) + 1;
+    
+    _label.text = [NSString stringWithFormat:@"You rolled %i", n];
+    
+    // derive the center x and y
+    CGFloat centerX = self.frame.size.width / 2;
+    CGFloat centerY = self.frame.size.height / 2;
+    
+    [UIView animateWithDuration:1.7
+                          delay:0.0
+                        options: UIViewAnimationOptionCurveEaseInOut
+                     animations:^{
+                         _label.frame = CGRectMake(
+                                                   centerX - (_label.frame.size.width / 2),
+                                                   centerY,
+                                                   _label.frame.size.width,
+                                                   _label.frame.size.height
+                                                   );
+                         _label.alpha = 0.0;
+                     }
+                     completion:completion];
 }
 
 @end

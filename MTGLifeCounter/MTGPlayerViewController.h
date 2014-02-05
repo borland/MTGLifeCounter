@@ -8,21 +8,28 @@
 
 #import <UIKit/UIKit.h>
 
+@class MTGPlayerBackgroundView;
+
 @interface MTGPlayerViewController : UIViewController
 - (IBAction)minusButtonPressed:(id)sender;
 - (IBAction)plusButtonPressed:(id)sender;
 
+@property (weak, nonatomic) IBOutlet MTGPlayerBackgroundView *backgroundView;
 @property (weak, nonatomic) IBOutlet UILabel *lifeTotalLabel;
 @property (weak, nonatomic) IBOutlet UIButton *playerNameButton;
+
+- (IBAction)lifeTotalWasTapped:(UITapGestureRecognizer*)sender;
+- (IBAction)lifeTotalPanning:(UIPanGestureRecognizer *)sender;
+
 
 @property (nonatomic)BOOL isUpsideDown;
 
 @property (nonatomic, copy)NSString* playerName;
 @property (nonatomic)NSInteger lifeTotal;
 
-- (IBAction)lifeTotalWasTapped:(UITapGestureRecognizer*)sender;
-- (IBAction)lifeTotalPanning:(UIPanGestureRecognizer *)sender;
+-(void)selectRandomColor;
 @end
 
 @interface MTGPlayerBackgroundView : UIView
+-(void)selectRandomColor;
 @end

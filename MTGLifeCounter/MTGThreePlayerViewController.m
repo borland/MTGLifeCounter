@@ -8,6 +8,7 @@
 
 #import "MTGThreePlayerViewController.h"
 #import "MTGPlayerViewController.h"
+#import "MTGUtilityViews.h"
 
 @interface MTGThreePlayerViewController ()
 
@@ -69,32 +70,32 @@
     }
 }
 
-
-
 - (IBAction)backButtonPressed:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (IBAction)d20ButtonPressed:(id)sender {
-    // generate an unbiased random number
+    CGRect frame = UIScreen.mainScreen.bounds;
+    frame.size.height -= UIApplication.sharedApplication.statusBarFrame.size.height;
     
-    double d = (double)rand() / (double)RAND_MAX;
-    int n = d * 20 + 1;
+    MTGDiceRollView* diceRollView = [[MTGDiceRollView alloc] initWithFrame:frame];
+    diceRollView.diceFaceCount = 20;
+    [self.view addSubview:diceRollView];
     
-    NSString* msg = [NSString stringWithFormat:@"You rolled %i", n];
-    UIAlertView* alert = [[UIAlertView alloc]initWithTitle:msg
-                                                   message:nil
-                                                  delegate:nil
-                                         cancelButtonTitle:@"OK"
-                                         otherButtonTitles:nil];
-    
-    [alert show];
+    [diceRollView rollWithCompletion:^(BOOL finished) {
+        [diceRollView removeFromSuperview];
+    }];
 }
 
 - (IBAction)refreshButtonPressed:(id)sender {
     _player1.lifeTotal = 20;
+    [_player1 selectRandomColor];
+    
     _player2.lifeTotal = 20;
+    [_player2 selectRandomColor];
+    
     _player3.lifeTotal = 20;
+    [_player3 selectRandomColor];
 }
 
 @end

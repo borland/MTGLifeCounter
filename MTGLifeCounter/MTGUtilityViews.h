@@ -8,7 +8,14 @@
 
 #import <Foundation/Foundation.h>
 
+int unbiasedRandom(int bound);
+
 @interface MTGDisclosureIndicatorView : UIView
 @end
 
+@interface MTGDiceRollView : UIView
 
+@property(nonatomic) NSUInteger diceFaceCount;
+
+-(void)rollWithCompletion:(void (^)(BOOL finished))completion;
+@end
