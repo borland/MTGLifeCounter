@@ -24,6 +24,10 @@
     return self;
 }
 
+-(void)awakeFromNib {
+    [self setNeedsStatusBarAppearanceUpdate];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -33,6 +37,18 @@
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
+    self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:0.30 green:0.10 blue:0.70 alpha:1];
+    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+
+    self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName: [UIColor whiteColor]};
+    
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+    [self setNeedsStatusBarAppearanceUpdate];
+}
+
+-(UIStatusBarStyle)preferredStatusBarStyle{
+    return UIStatusBarStyleLightContent;
 }
 
 - (void)didReceiveMemoryWarning
@@ -46,10 +62,7 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if(indexPath.section == 1 && indexPath.row == 0) { // the "roll d20" item
         
-        CGRect frame = UIScreen.mainScreen.bounds;
-        frame.size.height -= UIApplication.sharedApplication.statusBarFrame.size.height;
-        frame.size.height -= self.navigationController.navigationBar.frame.size.height;
-                              
+        CGRect frame = self.view.frame;
         MTGDiceRollView* diceRollView = [[MTGDiceRollView alloc] initWithFrame:frame];
         diceRollView.diceFaceCount = 20;
         [self.view addSubview:diceRollView];

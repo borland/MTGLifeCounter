@@ -14,6 +14,7 @@
 {
     // Override point for customization after application launch.
     srandomdev();
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
     
     return YES;
 }

@@ -140,16 +140,16 @@
     void(^addConstraints)(NSArray*) = ^(NSArray* constraints) {
         [self.view addConstraints:constraints];
     };
-
-    addConstraints([NSLayoutConstraint constraintsWithVisualFormat:@"H:|-6-[playerName]" options:0 metrics:nil views:views]);
-    addConstraints([NSLayoutConstraint constraintsWithVisualFormat:@"V:|-6-[playerName]" options:0 metrics:nil views:views]);
-    
+   
     addConstraints([NSLayoutConstraint constraintsWithVisualFormat:@"H:[view]-(<=1)-[lifeTotal]" options:NSLayoutFormatAlignAllCenterY metrics:nil views:views]);
     addConstraints([NSLayoutConstraint constraintsWithVisualFormat:@"V:[view]-(<=1)-[lifeTotal]" options:NSLayoutFormatAlignAllCenterX metrics:nil views:views]);
     
     switch (orientation) {
         case UIInterfaceOrientationPortrait:
         case UIInterfaceOrientationPortraitUpsideDown: // +/- on the sides
+            addConstraints([NSLayoutConstraint constraintsWithVisualFormat:@"H:|-6-[playerName]" options:0 metrics:nil views:views]);
+            addConstraints([NSLayoutConstraint constraintsWithVisualFormat:@"V:|-6-[playerName]" options:0 metrics:nil views:views]);
+            
             addConstraints([NSLayoutConstraint constraintsWithVisualFormat:@"H:[plus(44)]-|" options:0 metrics:nil views:views]);
             [self.view addConstraint:[NSLayoutConstraint constraintWithItem:plus attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:view attribute:NSLayoutAttributeCenterY multiplier:1.0 constant:0.0]];
             
@@ -159,6 +159,9 @@
             
         case UIInterfaceOrientationLandscapeLeft: // +/- on the top/bottom
         case UIInterfaceOrientationLandscapeRight:
+            addConstraints([NSLayoutConstraint constraintsWithVisualFormat:@"H:|-6-[playerName]" options:0 metrics:nil views:views]);
+            addConstraints([NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[playerName]" options:0 metrics:nil views:views]);
+            
             addConstraints([NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[plus(44)]" options:0 metrics:nil views:views]);
             [self.view addConstraint:[NSLayoutConstraint constraintWithItem:plus attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:view attribute:NSLayoutAttributeCenterX multiplier:1.0 constant:0.0]];
             

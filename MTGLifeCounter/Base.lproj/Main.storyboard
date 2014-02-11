@@ -22,7 +22,7 @@
             </objects>
             <point key="canvasLocation" x="294" y="130"/>
         </scene>
-        <!--Main Menu View Controller - Menu-->
+        <!--Main Menu View Controller - MTG Life Counter-->
         <scene sceneID="snC-rK-6aZ">
             <objects>
                 <tableViewController id="XIh-jq-Wt7" customClass="MTGMainMenuViewController" sceneMemberID="viewController">
@@ -122,7 +122,9 @@
                             <outlet property="delegate" destination="XIh-jq-Wt7" id="sus-5L-m2q"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Menu" id="1eQ-ow-4hK"/>
+                    <navigationItem key="navigationItem" title="MTG Life Counter" id="1eQ-ow-4hK">
+                        <barButtonItem key="backBarButtonItem" title="Menu" id="7Su-DQ-nYq"/>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="z3Y-zz-qSu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -475,12 +477,13 @@
             <point key="canvasLocation" x="1150" y="1163"/>
         </scene>
     </scenes>
+    <color key="tintColor" red="0.30196078431372547" green="0.10196078431372549" blue="0.70196078431372544" alpha="1" colorSpace="calibratedRGB"/>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="tfE-9h-oNB"/>
+        <segue reference="A1v-hs-hh7"/>
     </inferredMetricsTieBreakers>
 </document>

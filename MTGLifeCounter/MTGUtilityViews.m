@@ -63,35 +63,34 @@ const NSUInteger UIViewAutoresizingFlexibleMargins = UIViewAutoresizingFlexibleL
 -(id)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if(self) {
-        //        self.backgroundColor = [[UIColor grayColor] colorWithAlphaComponent:0.8];
         _diceFaceCount = 20; // default to D20
         
         // configurable bits
         self.backgroundColor = [UIColor clearColor];
         self.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
         
-        CGFloat labelHeight = 60;
-        CGFloat labelWidth = frame.size.width - 20;
+        CGFloat labelHeight = 160;
+        CGFloat labelWidth = 160;
         
         // derive the center x and y
         CGFloat centerX = frame.size.width / 2;
-        CGFloat bottomY = frame.size.height - labelHeight - 20;
+        CGFloat centerY = frame.size.height / 2;
         
         // create and configure the label
         _label = [[UILabel alloc]initWithFrame:CGRectMake(
                                                          centerX - (labelWidth / 2),
-                                                         bottomY ,
+                                                         centerY - (labelHeight / 2) ,
                                                          labelWidth ,
                                                          labelHeight
                                                          )];
-        _label.backgroundColor = [UIColor grayColor];
+        _label.backgroundColor = [UIColor colorWithRed:0.30 green:0.10 blue:0.70 alpha:1];
         _label.alpha = 1.0;
         _label.textColor = [UIColor whiteColor];
         _label.text = nil;
-        _label.font = [UIFont systemFontOfSize:40];
+        _label.font = [UIFont fontWithName:@"Futura" size:100];
         _label.textAlignment = NSTextAlignmentCenter;
         _label.autoresizingMask = UIViewAutoresizingFlexibleMargins;
-        _label.layer.cornerRadius = 5;
+        _label.layer.cornerRadius = 20;
         [self addSubview:_label];
         
         self.userInteractionEnabled = NO;
@@ -103,22 +102,12 @@ const NSUInteger UIViewAutoresizingFlexibleMargins = UIViewAutoresizingFlexibleL
 -(void)rollWithCompletion:(void (^)(BOOL finished))completion {
     int n = unbiasedRandom((int)self.diceFaceCount) + 1;
     
-    _label.text = [NSString stringWithFormat:@"You rolled %i", n];
-    
-    // derive the center x and y
-    CGFloat centerX = self.frame.size.width / 2;
-    CGFloat centerY = self.frame.size.height / 2;
+    _label.text = [NSString stringWithFormat:@"%i", n];
     
     [UIView animateWithDuration:1.7
                           delay:0.0
                         options: UIViewAnimationOptionCurveEaseInOut
                      animations:^{
-                         _label.frame = CGRectMake(
-                                                   centerX - (_label.frame.size.width / 2),
-                                                   centerY,
-                                                   _label.frame.size.width,
-                                                   _label.frame.size.height
-                                                   );
                          _label.alpha = 0.0;
                      }
                      completion:completion];

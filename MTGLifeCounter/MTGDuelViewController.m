@@ -29,7 +29,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
+    [self setNeedsStatusBarAppearanceUpdate];
+}
+
+-(UIStatusBarStyle)preferredStatusBarStyle{
+    return UIStatusBarStyleLightContent;
 }
 
 -(NSInteger)initialLifeTotal {
@@ -55,16 +59,15 @@
 }
 
 - (IBAction)d20ButtonPressed:(id)sender {
-    CGRect frame = UIScreen.mainScreen.bounds;
-    frame.size.height -= UIApplication.sharedApplication.statusBarFrame.size.height;
-    
+    CGRect frame = self.view.frame;
     MTGDiceRollView* diceRollView = [[MTGDiceRollView alloc] initWithFrame:frame];
     diceRollView.diceFaceCount = 20;
     [self.view addSubview:diceRollView];
     
     [diceRollView rollWithCompletion:^(BOOL finished) {
         [diceRollView removeFromSuperview];
-    }];}
+    }];
+}
 
 - (IBAction)refreshButtonPressed:(id)sender {
     self.player1.lifeTotal = self.initialLifeTotal;
@@ -118,28 +121,23 @@
         [self.view addConstraints:constraints];
     };
     
+    addConstraints([NSLayoutConstraint constraintsWithVisualFormat:@"|[toolbar]|"options:0 metrics:nil views:views]);
+    
     switch (orientation) {
         case UIInterfaceOrientationPortrait:
         case UIInterfaceOrientationPortraitUpsideDown:
-            addConstraints([NSLayoutConstraint constraintsWithVisualFormat:@"V:|[c1(==c2)][c2(==c1)][toolbar(44)]|"
-                                                                   options:0 metrics:nil views:views]);
+            addConstraints([NSLayoutConstraint constraintsWithVisualFormat:@"V:|[c1(==c2)][toolbar(33)][c2(==c1)]|" options:0 metrics:nil views:views]);
             
             addConstraints([NSLayoutConstraint constraintsWithVisualFormat:@"|[c1]|"options:0 metrics:nil views:views]);
-            
             addConstraints([NSLayoutConstraint constraintsWithVisualFormat:@"|[c2]|"options:0 metrics:nil views:views]);
-            addConstraints([NSLayoutConstraint constraintsWithVisualFormat:@"|[toolbar]|"options:0 metrics:nil views:views]);
             break;
             
         case UIInterfaceOrientationLandscapeLeft:
         case UIInterfaceOrientationLandscapeRight:
-            addConstraints([NSLayoutConstraint constraintsWithVisualFormat:@"|[c1(==c2)][c2(==c1)]|"
-                                                                   options:0 metrics:nil views:views]);
-
-            addConstraints([NSLayoutConstraint constraintsWithVisualFormat:@"|[toolbar]|"options:0 metrics:nil views:views]);
-            
-            addConstraints([NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[c1][toolbar(44)]|"options:0 metrics:nil views:views]);
-            
-            addConstraints([NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[c2][toolbar(44)]|"options:0 metrics:nil views:views]);
+            addConstraints([NSLayoutConstraint constraintsWithVisualFormat:@"|[c1(==c2)][c2(==c1)]|" options:0 metrics:nil views:views]);
+           
+            addConstraints([NSLayoutConstraint constraintsWithVisualFormat:@"V:|[c1][toolbar(33)]|"options:0 metrics:nil views:views]);
+            addConstraints([NSLayoutConstraint constraintsWithVisualFormat:@"V:|[c2][toolbar(33)]|"options:0 metrics:nil views:views]);
 
             break;
         default:
