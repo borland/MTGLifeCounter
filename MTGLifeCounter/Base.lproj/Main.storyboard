@@ -232,7 +232,7 @@
                                 <rect key="frame" x="0.0" y="436" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="w4M-QC-Hen"/>
+                                    <constraint firstAttribute="height" constant="44" placeholder="YES" id="w4M-QC-Hen"/>
                                 </constraints>
                                 <items>
                                     <barButtonItem title="Back" id="1Xf-Xu-yu0">
@@ -308,11 +308,11 @@
                         <viewControllerLayoutGuide type="bottom" id="uLq-MO-cXo"/>
                     </layoutGuides>
                     <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="HhS-YT-9sZ" customClass="MTGPlayerBackgroundView">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="208"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="144"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="20" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tr1-x1-g4t">
-                                <rect key="frame" x="86" y="26" width="149" height="156"/>
+                                <rect key="frame" x="86" y="-6" width="149" height="156"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <gestureRecognizers/>
                                 <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="120"/>
@@ -320,7 +320,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hiu-ck-zaa">
-                                <rect key="frame" x="270" y="68" width="30" height="72"/>
+                                <rect key="frame" x="270" y="36" width="30" height="72"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="50"/>
                                 <state key="normal" title="+">
@@ -332,7 +332,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="elN-Pl-dWS">
-                                <rect key="frame" x="20" y="74" width="30" height="72"/>
+                                <rect key="frame" x="20" y="42" width="30" height="72"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="50"/>
                                 <state key="normal" title="-">
@@ -484,6 +484,6 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="A1v-hs-hh7"/>
+        <segue reference="Npw-Vd-J0M"/>
     </inferredMetricsTieBreakers>
 </document>
