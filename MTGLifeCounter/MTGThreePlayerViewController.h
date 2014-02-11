@@ -13,4 +13,8 @@
 - (IBAction)d20ButtonPressed:(id)sender;
 - (IBAction)refreshButtonPressed:(id)sender;
 
+@property (weak, nonatomic) IBOutlet UIToolbar *toolbar;
+@property (weak, nonatomic) IBOutlet UIView *c1;
+@property (weak, nonatomic) IBOutlet UIView *c2;
+@property (weak, nonatomic) IBOutlet UIView *c3;
 @end

@@ -141,7 +141,7 @@
                                 <rect key="frame" x="0.0" y="436" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="pfk-Gr-PVl"/>
+                                    <constraint firstAttribute="height" constant="44" placeholder="YES" id="pfk-Gr-PVl"/>
                                 </constraints>
                                 <items>
                                     <barButtonItem title="Back" id="oTV-n5-rQz">
@@ -163,18 +163,26 @@
                                     </barButtonItem>
                                 </items>
                             </toolbar>
-                            <containerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EQp-lC-ct0" userLabel="C1">
+                            <containerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EQp-lC-ct0" userLabel="C1">
                                 <rect key="frame" x="0.0" y="20" width="320" height="208"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="208" placeholder="YES" id="4h6-A6-3BE"/>
+                                    <constraint firstAttribute="width" constant="320" placeholder="YES" id="cHF-Vk-D0O"/>
+                                </constraints>
                                 <connections>
                                     <segue destination="jlQ-4W-0P5" kind="embed" identifier="player1_embed" id="MbB-mQ-Cak"/>
                                 </connections>
                             </containerView>
-                            <containerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AZf-SH-Wjc" userLabel="C2">
+                            <containerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AZf-SH-Wjc" userLabel="C2">
                                 <rect key="frame" x="0.0" y="228" width="320" height="208"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="208" placeholder="YES" id="Ee8-xc-J11"/>
+                                    <constraint firstAttribute="width" constant="320" placeholder="YES" id="t2g-pr-pIv"/>
+                                </constraints>
                                 <connections>
                                     <segue destination="jlQ-4W-0P5" kind="embed" identifier="player2_embed" id="A1v-hs-hh7"/>
                                 </connections>
@@ -182,9 +190,13 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="gcx-A7-qzg" firstAttribute="leading" secondItem="vZS-k0-9ek" secondAttribute="leading" id="0iK-qr-2tv"/>
-                            <constraint firstItem="ee1-SI-Gor" firstAttribute="top" secondItem="gcx-A7-qzg" secondAttribute="bottom" id="FPw-8D-BV6"/>
-                            <constraint firstAttribute="trailing" secondItem="gcx-A7-qzg" secondAttribute="trailing" id="W6F-dF-D1J"/>
+                            <constraint firstItem="gcx-A7-qzg" firstAttribute="leading" secondItem="vZS-k0-9ek" secondAttribute="leading" placeholder="YES" id="0iK-qr-2tv"/>
+                            <constraint firstItem="ee1-SI-Gor" firstAttribute="top" secondItem="gcx-A7-qzg" secondAttribute="bottom" placeholder="YES" id="FPw-8D-BV6"/>
+                            <constraint firstItem="EQp-lC-ct0" firstAttribute="top" secondItem="RfX-LU-E27" secondAttribute="bottom" placeholder="YES" id="NzB-8o-xAy" userLabel="C1-top(placeholder)"/>
+                            <constraint firstAttribute="trailing" secondItem="gcx-A7-qzg" secondAttribute="trailing" placeholder="YES" id="W6F-dF-D1J"/>
+                            <constraint firstItem="EQp-lC-ct0" firstAttribute="leading" secondItem="vZS-k0-9ek" secondAttribute="leading" placeholder="YES" id="WEg-bf-Zpv" userLabel="C1-left(placeholder)"/>
+                            <constraint firstItem="AZf-SH-Wjc" firstAttribute="top" secondItem="EQp-lC-ct0" secondAttribute="bottom" placeholder="YES" id="lkD-xK-nhs"/>
+                            <constraint firstItem="AZf-SH-Wjc" firstAttribute="leading" secondItem="vZS-k0-9ek" secondAttribute="leading" placeholder="YES" id="sDD-ww-s3j" userLabel="C2-left(placeholder)"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="bWh-1Q-QgE"/>
@@ -192,6 +204,7 @@
                     <connections>
                         <outlet property="container1" destination="EQp-lC-ct0" id="zyC-ww-ZON"/>
                         <outlet property="container2" destination="AZf-SH-Wjc" id="Trv-it-jN7"/>
+                        <outlet property="toolbar" destination="gcx-A7-qzg" id="Js8-HV-cnR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qot-t5-RsL" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -263,13 +276,19 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="YEU-9I-sxD" firstAttribute="leading" secondItem="1z9-w5-L3I" secondAttribute="leading" id="ISc-Rx-KpE"/>
-                            <constraint firstAttribute="trailing" secondItem="YEU-9I-sxD" secondAttribute="trailing" id="cpZ-I9-wvH"/>
-                            <constraint firstItem="25o-jd-R0k" firstAttribute="top" secondItem="YEU-9I-sxD" secondAttribute="bottom" id="z5V-kz-oVu"/>
+                            <constraint firstItem="YEU-9I-sxD" firstAttribute="leading" secondItem="1z9-w5-L3I" secondAttribute="leading" placeholder="YES" id="ISc-Rx-KpE"/>
+                            <constraint firstAttribute="trailing" secondItem="YEU-9I-sxD" secondAttribute="trailing" placeholder="YES" id="cpZ-I9-wvH"/>
+                            <constraint firstItem="25o-jd-R0k" firstAttribute="top" secondItem="YEU-9I-sxD" secondAttribute="bottom" placeholder="YES" id="z5V-kz-oVu"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="0tw-ZJ-dT0"/>
                     <nil key="simulatedTopBarMetrics"/>
+                    <connections>
+                        <outlet property="c1" destination="qgn-8M-JdA" id="qbH-cr-h6S"/>
+                        <outlet property="c2" destination="ntR-bh-ujJ" id="9Ef-6a-2em"/>
+                        <outlet property="c3" destination="4M4-ik-mka" id="eOM-Eb-wyU"/>
+                        <outlet property="toolbar" destination="YEU-9I-sxD" id="VHL-54-oPG"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rha-eJ-FqP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -284,7 +303,7 @@
                         <viewControllerLayoutGuide type="bottom" id="uLq-MO-cXo"/>
                     </layoutGuides>
                     <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="HhS-YT-9sZ" customClass="MTGPlayerBackgroundView">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="144"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="208"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="20" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tr1-x1-g4t">
@@ -371,6 +390,6 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="Npw-Vd-J0M"/>
+        <segue reference="MbB-mQ-Cak"/>
     </inferredMetricsTieBreakers>
 </document>
