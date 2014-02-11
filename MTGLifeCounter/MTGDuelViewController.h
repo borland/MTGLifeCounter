@@ -16,4 +16,6 @@
 @property (weak, nonatomic) IBOutlet UIView *container1;
 @property (weak, nonatomic) IBOutlet UIView *container2;
 @property (weak, nonatomic) IBOutlet UIToolbar *toolbar;
+
+-(NSInteger)initialLifeTotal;
 @end

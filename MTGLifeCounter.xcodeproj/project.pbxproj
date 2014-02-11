@@ -24,6 +24,7 @@
 		D342B28F189B12E100F9A00F /* MTGDuelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D342B28E189B12E100F9A00F /* MTGDuelViewController.m */; };
 		D342B295189B13B200F9A00F /* MTGUtilityViews.m in Sources */ = {isa = PBXBuildFile; fileRef = D342B294189B13B200F9A00F /* MTGUtilityViews.m */; };
 		D342B2A0189B1E6B00F9A00F /* MTGPlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D342B29F189B1E6B00F9A00F /* MTGPlayerViewController.m */; };
+		D37FF19A18A9B30200B6D26D /* MTGTwoHeadedGiantViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D37FF19918A9B30200B6D26D /* MTGTwoHeadedGiantViewController.m */; };
 		D38C8491189B40C000D924BF /* MTGThreePlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D38C8490189B40C000D924BF /* MTGThreePlayerViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -63,6 +64,8 @@
 		D342B294189B13B200F9A00F /* MTGUtilityViews.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTGUtilityViews.m; sourceTree = "<group>"; };
 		D342B29E189B1E6B00F9A00F /* MTGPlayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTGPlayerViewController.h; sourceTree = "<group>"; };
 		D342B29F189B1E6B00F9A00F /* MTGPlayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTGPlayerViewController.m; sourceTree = "<group>"; };
+		D37FF19818A9B30200B6D26D /* MTGTwoHeadedGiantViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTGTwoHeadedGiantViewController.h; sourceTree = "<group>"; };
+		D37FF19918A9B30200B6D26D /* MTGTwoHeadedGiantViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTGTwoHeadedGiantViewController.m; sourceTree = "<group>"; };
 		D38C848F189B40C000D924BF /* MTGThreePlayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTGThreePlayerViewController.h; sourceTree = "<group>"; };
 		D38C8490189B40C000D924BF /* MTGThreePlayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTGThreePlayerViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -139,6 +142,8 @@
 				D38C8490189B40C000D924BF /* MTGThreePlayerViewController.m */,
 				D30C6BFB18A1DB94003A9B7E /* MTGMainMenuViewController.h */,
 				D30C6BFC18A1DB94003A9B7E /* MTGMainMenuViewController.m */,
+				D37FF19818A9B30200B6D26D /* MTGTwoHeadedGiantViewController.h */,
+				D37FF19918A9B30200B6D26D /* MTGTwoHeadedGiantViewController.m */,
 			);
 			path = MTGLifeCounter;
 			sourceTree = "<group>";
@@ -271,6 +276,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D342B265189B118E00F9A00F /* main.m in Sources */,
+				D37FF19A18A9B30200B6D26D /* MTGTwoHeadedGiantViewController.m in Sources */,
 				D38C8491189B40C000D924BF /* MTGThreePlayerViewController.m in Sources */,
 				D30C6BFD18A1DB94003A9B7E /* MTGMainMenuViewController.m in Sources */,
 				D342B2A0189B1E6B00F9A00F /* MTGPlayerViewController.m in Sources */,

@@ -32,6 +32,10 @@
 	// Do any additional setup after loading the view.
 }
 
+-(NSInteger)initialLifeTotal {
+    return 20;
+}
+
 -(void)viewWillAppear:(BOOL)animated {
     self.navigationController.navigationBarHidden = YES;
 }
@@ -63,9 +67,9 @@
     }];}
 
 - (IBAction)refreshButtonPressed:(id)sender {
-    self.player1.lifeTotal = 20;
+    self.player1.lifeTotal = self.initialLifeTotal;
     [self.player1 selectRandomColor];
-    self.player2.lifeTotal = 20;
+    self.player2.lifeTotal = self.initialLifeTotal;
     [self.player2 selectRandomColor];
 }
 
@@ -75,7 +79,7 @@
     if ([segueName isEqualToString: @"player1_embed"]) {
         self.player1 = (MTGPlayerViewController *) [segue destinationViewController];
         self.player1.playerName = @"P1";
-        self.player1.lifeTotal = 20;
+        self.player1.lifeTotal = self.initialLifeTotal;
 
         switch (self.interfaceOrientation) {
             case UIInterfaceOrientationPortrait:
@@ -93,7 +97,7 @@
     else if ([segueName isEqualToString: @"player2_embed"]) {
         self.player2 = (MTGPlayerViewController *) [segue destinationViewController];
         self.player2.playerName = @"P2";
-        self.player2.lifeTotal = 20;
+        self.player2.lifeTotal = self.initialLifeTotal;
     }
     
     if(self.player1 && self.player2) {
