@@ -29,11 +29,13 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
+    [self setConstraintsFor:self.interfaceOrientation];
     if(self.isUpsideDown)
-        self.view.transform = CGAffineTransformRotate(CGAffineTransformIdentity, M_PI);;
+        self.view.transform = CGAffineTransformRotate(CGAffineTransformIdentity, M_PI);
     
     [self addObserver:self forKeyPath:@"lifeTotal" options:NSKeyValueObservingOptionNew context:nil];
     [self addObserver:self forKeyPath:@"playerName" options:NSKeyValueObservingOptionNew context:nil];
+    [self addObserver:self forKeyPath:@"isUpsideDown" options:NSKeyValueObservingOptionNew context:nil];
 }
 
 -(void)viewWillAppear:(BOOL)animated {
@@ -62,32 +64,51 @@
         self.lifeTotalLabel.text = [NSString stringWithFormat:@"%li", (long)self.lifeTotal];
     } else if([keyPath isEqualToString:@"playerName"]) {
         [self.playerNameButton setTitle:self.playerName forState:UIControlStateNormal];
+    } else if([keyPath isEqualToString:@"isUpsideDown"]) {
+        if(self.isUpsideDown)
+            self.view.transform = CGAffineTransformRotate(CGAffineTransformIdentity, M_PI);
+        else
+            self.view.transform = CGAffineTransformIdentity;
     }
 }
 
 -(void)dealloc {
     [self removeObserver:self forKeyPath:@"lifeTotal"];
     [self removeObserver:self forKeyPath:@"playerName"];
+    [self removeObserver:self forKeyPath:@"isUpsideDown"];
 }
 
 - (IBAction)lifeTotalWasTapped:(UITapGestureRecognizer*)sender {
     CGPoint location = [sender locationInView:self.view];
     
     CGRect reference = self.view.frame;
-    double halfX = reference.size.width / 2;
+
     
     int n = 1;
     if([sender numberOfTouches] == 2) {
         n = 5;
     }
     
-    if(location.x < halfX) {
-        [self minusButtonPressed:sender];
-    }else {
-        [self plusButtonPressed:sender];
+    BOOL up = YES;
+    switch(self.interfaceOrientation) {
+        case UIInterfaceOrientationPortrait:
+        case UIInterfaceOrientationPortraitUpsideDown:
+            up = location.x > (reference.size.width / 2);
+            break;
+            
+        case UIInterfaceOrientationLandscapeLeft:
+        case UIInterfaceOrientationLandscapeRight:
+            up = location.y < (reference.size.height / 2);
+            break;
     }
-}
+    
+    if(up) {
+        [self plusButtonPressed:sender];
+    } else {
+        [self minusButtonPressed:sender];
+    }
 
+}
 
 - (IBAction)lifeTotalPanning:(UIPanGestureRecognizer *)sender {
     CGPoint translation = [sender translationInView:self.view];
@@ -102,6 +123,56 @@
 
 -(void)selectRandomColor {
     [self.backgroundView selectRandomColor];
+}
+
+
+-(void)setConstraintsFor:(UIInterfaceOrientation)orientation {
+    [self.view removeConstraints:self.view.constraints];
+    
+    UIView* view = self.view;
+    UIView* plus = self.plusButton;
+    UIView* minus = self.minusButton;
+    UIView* lifeTotal = self.lifeTotalLabel;
+    UIView* playerName = self.playerNameButton;
+    
+    NSDictionary* views = NSDictionaryOfVariableBindings(view, plus, minus, lifeTotal, playerName);
+    
+    void(^addConstraints)(NSArray*) = ^(NSArray* constraints) {
+        [self.view addConstraints:constraints];
+    };
+
+    addConstraints([NSLayoutConstraint constraintsWithVisualFormat:@"H:|-6-[playerName]" options:0 metrics:nil views:views]);
+    addConstraints([NSLayoutConstraint constraintsWithVisualFormat:@"V:|-6-[playerName]" options:0 metrics:nil views:views]);
+    
+    addConstraints([NSLayoutConstraint constraintsWithVisualFormat:@"H:[view]-(<=1)-[lifeTotal]" options:NSLayoutFormatAlignAllCenterY metrics:nil views:views]);
+    addConstraints([NSLayoutConstraint constraintsWithVisualFormat:@"V:[view]-(<=1)-[lifeTotal]" options:NSLayoutFormatAlignAllCenterX metrics:nil views:views]);
+    
+    switch (orientation) {
+        case UIInterfaceOrientationPortrait:
+        case UIInterfaceOrientationPortraitUpsideDown: // +/- on the sides
+            addConstraints([NSLayoutConstraint constraintsWithVisualFormat:@"H:[plus(44)]-|" options:0 metrics:nil views:views]);
+            [self.view addConstraint:[NSLayoutConstraint constraintWithItem:plus attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:view attribute:NSLayoutAttributeCenterY multiplier:1.0 constant:0.0]];
+            
+            addConstraints([NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[minus(44)]" options:0 metrics:nil views:views]);
+            [self.view addConstraint:[NSLayoutConstraint constraintWithItem:minus attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:view attribute:NSLayoutAttributeCenterY multiplier:1.0 constant:0.0]];
+            break;
+            
+        case UIInterfaceOrientationLandscapeLeft: // +/- on the top/bottom
+        case UIInterfaceOrientationLandscapeRight:
+            addConstraints([NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[plus(44)]" options:0 metrics:nil views:views]);
+            [self.view addConstraint:[NSLayoutConstraint constraintWithItem:plus attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:view attribute:NSLayoutAttributeCenterX multiplier:1.0 constant:0.0]];
+            
+            addConstraints([NSLayoutConstraint constraintsWithVisualFormat:@"V:[minus(44)]-|" options:0 metrics:nil views:views]);
+            [self.view addConstraint:[NSLayoutConstraint constraintWithItem:minus attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:view attribute:NSLayoutAttributeCenterX multiplier:1.0 constant:0.0]];
+            break;
+        default:
+            break;
+    }
+}
+
+-(void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
+    [self setConstraintsFor:toInterfaceOrientation];
+    [self.view setNeedsDisplay];
 }
 
 @end

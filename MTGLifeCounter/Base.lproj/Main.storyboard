@@ -314,8 +314,8 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hiu-ck-zaa">
-                                <rect key="frame" x="260" y="84" width="40" height="40"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hiu-ck-zaa">
+                                <rect key="frame" x="270" y="68" width="30" height="72"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="50"/>
                                 <state key="normal" title="+">
@@ -326,11 +326,11 @@
                                     <action selector="plusButtonPressed:" destination="jlQ-4W-0P5" eventType="touchUpInside" id="BxF-le-Gbv"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="elN-Pl-dWS">
-                                <rect key="frame" x="20" y="90" width="40" height="40"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="elN-Pl-dWS">
+                                <rect key="frame" x="20" y="74" width="30" height="72"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="50"/>
-                                <state key="normal" title="-   ">
+                                <state key="normal" title="-">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -350,12 +350,12 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
                         <constraints>
-                            <constraint firstItem="elN-Pl-dWS" firstAttribute="leading" secondItem="HhS-YT-9sZ" secondAttribute="leading" constant="20" id="3Mb-5R-Tng"/>
-                            <constraint firstAttribute="centerY" secondItem="tr1-x1-g4t" secondAttribute="centerY" id="DK0-Mh-dau"/>
-                            <constraint firstAttribute="centerX" secondItem="tr1-x1-g4t" secondAttribute="centerX" id="GDm-8r-Rd5"/>
-                            <constraint firstAttribute="centerY" secondItem="elN-Pl-dWS" secondAttribute="centerY" constant="-6" id="PCb-3u-8pI"/>
-                            <constraint firstAttribute="trailing" secondItem="hiu-ck-zaa" secondAttribute="trailing" constant="20" id="Szc-NO-6vr"/>
-                            <constraint firstAttribute="centerY" secondItem="hiu-ck-zaa" secondAttribute="centerY" id="dWT-p3-4gv"/>
+                            <constraint firstItem="elN-Pl-dWS" firstAttribute="leading" secondItem="HhS-YT-9sZ" secondAttribute="leading" constant="20" placeholder="YES" id="3Mb-5R-Tng"/>
+                            <constraint firstAttribute="centerY" secondItem="tr1-x1-g4t" secondAttribute="centerY" placeholder="YES" id="DK0-Mh-dau"/>
+                            <constraint firstAttribute="centerX" secondItem="tr1-x1-g4t" secondAttribute="centerX" placeholder="YES" id="GDm-8r-Rd5"/>
+                            <constraint firstAttribute="centerY" secondItem="elN-Pl-dWS" secondAttribute="centerY" constant="-6" placeholder="YES" id="PCb-3u-8pI"/>
+                            <constraint firstAttribute="trailing" secondItem="hiu-ck-zaa" secondAttribute="trailing" constant="20" placeholder="YES" id="Szc-NO-6vr"/>
+                            <constraint firstAttribute="centerY" secondItem="hiu-ck-zaa" secondAttribute="centerY" placeholder="YES" id="dWT-p3-4gv"/>
                         </constraints>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="kOE-XO-68U" appends="YES" id="8Uc-0X-aV4"/>
@@ -366,7 +366,9 @@
                     <connections>
                         <outlet property="backgroundView" destination="HhS-YT-9sZ" id="UKP-p3-vQn"/>
                         <outlet property="lifeTotalLabel" destination="tr1-x1-g4t" id="94B-Qi-XH8"/>
+                        <outlet property="minusButton" destination="elN-Pl-dWS" id="K3f-aJ-DXi"/>
                         <outlet property="playerNameButton" destination="bsh-3G-mX0" id="Xon-xZ-7EX"/>
+                        <outlet property="plusButton" destination="hiu-ck-zaa" id="l85-PX-q9o"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b3y-Pi-bJ8" userLabel="First Responder" sceneMemberID="firstResponder"/>

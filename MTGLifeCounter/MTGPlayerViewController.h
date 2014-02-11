@@ -17,6 +17,8 @@
 @property (weak, nonatomic) IBOutlet MTGPlayerBackgroundView *backgroundView;
 @property (weak, nonatomic) IBOutlet UILabel *lifeTotalLabel;
 @property (weak, nonatomic) IBOutlet UIButton *playerNameButton;
+@property (weak, nonatomic) IBOutlet UIButton *plusButton;
+@property (weak, nonatomic) IBOutlet UIButton *minusButton;
 
 - (IBAction)lifeTotalWasTapped:(UITapGestureRecognizer*)sender;
 - (IBAction)lifeTotalPanning:(UIPanGestureRecognizer *)sender;

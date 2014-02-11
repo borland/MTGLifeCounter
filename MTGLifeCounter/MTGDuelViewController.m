@@ -76,7 +76,19 @@
         self.player1 = (MTGPlayerViewController *) [segue destinationViewController];
         self.player1.playerName = @"P1";
         self.player1.lifeTotal = 20;
-        self.player1.isUpsideDown = YES;
+
+        switch (self.interfaceOrientation) {
+            case UIInterfaceOrientationPortrait:
+            case UIInterfaceOrientationPortraitUpsideDown:
+                self.player1.isUpsideDown = YES;
+                break;
+                
+            case UIInterfaceOrientationLandscapeLeft:
+            case UIInterfaceOrientationLandscapeRight:
+                self.player1.isUpsideDown = NO;
+                break;
+        }
+        
     }
     else if ([segueName isEqualToString: @"player2_embed"]) {
         self.player2 = (MTGPlayerViewController *) [segue destinationViewController];
@@ -133,6 +145,18 @@
 
 -(void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
     [self setConstraintsFor:toInterfaceOrientation];
+    
+    switch (toInterfaceOrientation) {
+        case UIInterfaceOrientationPortrait:
+        case UIInterfaceOrientationPortraitUpsideDown:
+            self.player1.isUpsideDown = YES;
+            break;
+            
+        case UIInterfaceOrientationLandscapeLeft:
+        case UIInterfaceOrientationLandscapeRight:
+            self.player1.isUpsideDown = NO;
+            break;
+    }
 }
 
 @end
