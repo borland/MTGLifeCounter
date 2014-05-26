@@ -9,15 +9,16 @@
 #import "MTGThreePlayerViewController.h"
 #import "MTGPlayerViewController.h"
 #import "MTGUtilityViews.h"
+#import "MTGDataStore.h"
 
 @interface MTGThreePlayerViewController ()
 
 @end
 
 @implementation MTGThreePlayerViewController {
-    MTGPlayerViewController* _player1;
-    MTGPlayerViewController* _player2;
-    MTGPlayerViewController* _player3;
+    __weak MTGPlayerViewController* _player1;
+    __weak MTGPlayerViewController* _player2;
+    __weak MTGPlayerViewController* _player3;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -50,11 +51,25 @@
 
 -(void)viewWillAppear:(BOOL)animated {
     self.navigationController.navigationBarHidden = YES;
+    
+    NSDictionary* settings = [MTGDataStore getWithKey:NSStringFromClass(self.class)];
+    if(settings) {
+        _player1.lifeTotal = [[settings objectForKey:@"player1"] integerValue];
+        _player2.lifeTotal = [[settings objectForKey:@"player2"] integerValue];
+        _player3.lifeTotal = [[settings objectForKey:@"player3"] integerValue];
+    }
 }
 
 -(void)viewWillDisappear:(BOOL)animated {
     self.navigationController.navigationBarHidden = NO;
+    
+    NSDictionary* settings = @{ @"player1": @(_player1.lifeTotal),
+                                @"player2": @(_player2.lifeTotal),
+                                @"player3": @(_player3.lifeTotal) };
+    
+    [MTGDataStore setWithKey:NSStringFromClass(self.class) value:settings];
 }
+
 
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {

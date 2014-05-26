@@ -9,13 +9,12 @@
 #import "MTGDuelViewController.h"
 #import "MTGPlayerViewController.h"
 #import "MTGUtilityViews.h"
+#import "MTGDataStore.h"
 
-@interface MTGDuelViewController ()
-@property(nonatomic, weak)MTGPlayerViewController* player1;
-@property(nonatomic, weak)MTGPlayerViewController* player2;
-@end
-
-@implementation MTGDuelViewController
+@implementation MTGDuelViewController {
+    __weak MTGPlayerViewController* _player1;
+    __weak MTGPlayerViewController* _player2;
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -42,10 +41,21 @@
 
 -(void)viewWillAppear:(BOOL)animated {
     self.navigationController.navigationBarHidden = YES;
+    
+    NSDictionary* settings = [MTGDataStore getWithKey:NSStringFromClass(self.class)];
+    if(settings) {
+        _player1.lifeTotal = [[settings objectForKey:@"player1"] integerValue];
+        _player2.lifeTotal = [[settings objectForKey:@"player2"] integerValue];
+    }
 }
 
 -(void)viewWillDisappear:(BOOL)animated {
     self.navigationController.navigationBarHidden = NO;
+    
+    NSDictionary* settings = @{ @"player1": @(_player1.lifeTotal),
+                                @"player2": @(_player2.lifeTotal) };
+    
+    [MTGDataStore setWithKey:NSStringFromClass(self.class) value:settings];
 }
 
 - (void)didReceiveMemoryWarning
@@ -70,40 +80,40 @@
 }
 
 - (IBAction)refreshButtonPressed:(id)sender {
-    self.player1.lifeTotal = self.initialLifeTotal;
-    [self.player1 selectRandomColor];
-    self.player2.lifeTotal = self.initialLifeTotal;
-    [self.player2 selectRandomColor];
+    _player1.lifeTotal = self.initialLifeTotal;
+    [_player1 selectRandomColor];
+    _player2.lifeTotal = self.initialLifeTotal;
+    [_player2 selectRandomColor];
 }
 
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     NSString * segueName = segue.identifier;
     if ([segueName isEqualToString: @"player1_embed"]) {
-        self.player1 = (MTGPlayerViewController *) [segue destinationViewController];
-        self.player1.playerName = @"P1";
-        self.player1.lifeTotal = self.initialLifeTotal;
+        _player1 = (MTGPlayerViewController *) [segue destinationViewController];
+        _player1.playerName = @"P1";
+        _player1.lifeTotal = self.initialLifeTotal;
 
         switch (self.interfaceOrientation) {
             case UIInterfaceOrientationPortrait:
             case UIInterfaceOrientationPortraitUpsideDown:
-                self.player1.isUpsideDown = YES;
+                _player1.isUpsideDown = YES;
                 break;
                 
             case UIInterfaceOrientationLandscapeLeft:
             case UIInterfaceOrientationLandscapeRight:
-                self.player1.isUpsideDown = NO;
+                _player1.isUpsideDown = NO;
                 break;
         }
         
     }
     else if ([segueName isEqualToString: @"player2_embed"]) {
-        self.player2 = (MTGPlayerViewController *) [segue destinationViewController];
-        self.player2.playerName = @"P2";
-        self.player2.lifeTotal = self.initialLifeTotal;
+        _player2 = (MTGPlayerViewController *) [segue destinationViewController];
+        _player2.playerName = @"P2";
+        _player2.lifeTotal = self.initialLifeTotal;
     }
     
-    if(self.player1 && self.player2) {
+    if(_player1 && _player2) {
         [self setConstraintsFor:self.interfaceOrientation];
     }
 }
@@ -126,7 +136,7 @@
     switch (orientation) {
         case UIInterfaceOrientationPortrait:
         case UIInterfaceOrientationPortraitUpsideDown:
-            addConstraints([NSLayoutConstraint constraintsWithVisualFormat:@"V:|[c1(==c2)][toolbar(33)][c2(==c1)]|" options:0 metrics:nil views:views]);
+            addConstraints([NSLayoutConstraint constraintsWithVisualFormat:@"V:|[c1(==c2)][toolbar(44)][c2(==c1)]|" options:0 metrics:nil views:views]);
             
             addConstraints([NSLayoutConstraint constraintsWithVisualFormat:@"|[c1]|"options:0 metrics:nil views:views]);
             addConstraints([NSLayoutConstraint constraintsWithVisualFormat:@"|[c2]|"options:0 metrics:nil views:views]);
@@ -136,8 +146,8 @@
         case UIInterfaceOrientationLandscapeRight:
             addConstraints([NSLayoutConstraint constraintsWithVisualFormat:@"|[c1(==c2)][c2(==c1)]|" options:0 metrics:nil views:views]);
            
-            addConstraints([NSLayoutConstraint constraintsWithVisualFormat:@"V:|[c1][toolbar(33)]|"options:0 metrics:nil views:views]);
-            addConstraints([NSLayoutConstraint constraintsWithVisualFormat:@"V:|[c2][toolbar(33)]|"options:0 metrics:nil views:views]);
+            addConstraints([NSLayoutConstraint constraintsWithVisualFormat:@"V:|[c1][toolbar(44)]|"options:0 metrics:nil views:views]);
+            addConstraints([NSLayoutConstraint constraintsWithVisualFormat:@"V:|[c2][toolbar(44)]|"options:0 metrics:nil views:views]);
 
             break;
         default:
@@ -151,12 +161,12 @@
     switch (toInterfaceOrientation) {
         case UIInterfaceOrientationPortrait:
         case UIInterfaceOrientationPortraitUpsideDown:
-            self.player1.isUpsideDown = YES;
+            _player1.isUpsideDown = YES;
             break;
             
         case UIInterfaceOrientationLandscapeLeft:
         case UIInterfaceOrientationLandscapeRight:
-            self.player1.isUpsideDown = NO;
+            _player1.isUpsideDown = NO;
             break;
     }
 }

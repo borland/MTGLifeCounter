@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		D30C6BFD18A1DB94003A9B7E /* MTGMainMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D30C6BFC18A1DB94003A9B7E /* MTGMainMenuViewController.m */; };
+		D33836E41932DEDA002CECD1 /* MTGDataStore.m in Sources */ = {isa = PBXBuildFile; fileRef = D33836E31932DEDA002CECD1 /* MTGDataStore.m */; };
 		D342B259189B118E00F9A00F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D342B258189B118E00F9A00F /* Foundation.framework */; };
 		D342B25B189B118E00F9A00F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D342B25A189B118E00F9A00F /* CoreGraphics.framework */; };
 		D342B25D189B118E00F9A00F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D342B25C189B118E00F9A00F /* UIKit.framework */; };
@@ -41,6 +42,8 @@
 /* Begin PBXFileReference section */
 		D30C6BFB18A1DB94003A9B7E /* MTGMainMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTGMainMenuViewController.h; sourceTree = "<group>"; };
 		D30C6BFC18A1DB94003A9B7E /* MTGMainMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTGMainMenuViewController.m; sourceTree = "<group>"; };
+		D33836E21932DEDA002CECD1 /* MTGDataStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTGDataStore.h; sourceTree = "<group>"; };
+		D33836E31932DEDA002CECD1 /* MTGDataStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTGDataStore.m; sourceTree = "<group>"; };
 		D342B255189B118E00F9A00F /* MTGLifeCounter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MTGLifeCounter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D342B258189B118E00F9A00F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D342B25A189B118E00F9A00F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -144,6 +147,8 @@
 				D30C6BFC18A1DB94003A9B7E /* MTGMainMenuViewController.m */,
 				D37FF19818A9B30200B6D26D /* MTGTwoHeadedGiantViewController.h */,
 				D37FF19918A9B30200B6D26D /* MTGTwoHeadedGiantViewController.m */,
+				D33836E21932DEDA002CECD1 /* MTGDataStore.h */,
+				D33836E31932DEDA002CECD1 /* MTGDataStore.m */,
 			);
 			path = MTGLifeCounter;
 			sourceTree = "<group>";
@@ -277,6 +282,7 @@
 			files = (
 				D342B265189B118E00F9A00F /* main.m in Sources */,
 				D37FF19A18A9B30200B6D26D /* MTGTwoHeadedGiantViewController.m in Sources */,
+				D33836E41932DEDA002CECD1 /* MTGDataStore.m in Sources */,
 				D38C8491189B40C000D924BF /* MTGThreePlayerViewController.m in Sources */,
 				D30C6BFD18A1DB94003A9B7E /* MTGMainMenuViewController.m in Sources */,
 				D342B2A0189B1E6B00F9A00F /* MTGPlayerViewController.m in Sources */,
